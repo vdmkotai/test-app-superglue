@@ -11,14 +11,12 @@ const Tree: React.FC<ITreeProps> = ({ data }) => {
 
     return (
       <ul>
-        {keys.map((key, index) => {
-          return (
-            <li key={key}>
-              {key}
-              {typeof values[index] === 'object' && renderItem(values[index])}
-            </li>
-          )
-        })}
+        {keys.map((key, index) => (
+          <li key={key}>
+            {key}: {typeof data[key] !== 'object' && data[key]}
+            {typeof data[key] === 'object' && renderItem(values[index])}
+          </li>
+        ))}
       </ul>
     )
   }
